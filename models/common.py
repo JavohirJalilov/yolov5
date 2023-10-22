@@ -978,8 +978,8 @@ class ECABottleneck(nn.Module):
 
 class C3ECA(C3):
     # C3 module with ECABottleneck()
-    def __init__(self, c1, c2, n=1, shortcut=True, g=1, e=0.5):
-        super().__init__(c1, c2, n, shortcut, g, e)
+    def __init__(self, c2, n=1, shortcut=True, g=1, e=0.5):
+        super().__init__(c2, n, shortcut, g, e)
         c_ = int(c2 * e)  # hidden channels
         self.m = nn.Sequential(*(ECABottleneck(c_, c_,shortcut) for _ in range(n)))
 
